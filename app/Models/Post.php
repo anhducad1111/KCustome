@@ -12,24 +12,30 @@ use App\Models\Comment;
 class Post extends Model
 {
     use HasFactory;
+    public $timestamps = true;
     protected $fillable = [
         'post_content',
         'post_image',
         'user_id',
-        'category_id'
+        'category_id',
+
     ];
     public function categories() {
         // return $this->belongsTo(Category::class);
         return $this->belongsToMany(Category::class,'posts','id','category_id');
     }
     public function user() {
-        // return $this->belongsTo(User::class);
-        return $this->belongsToMany(User::class,'posts','id','user_id');
+        return $this->belongsTo(User::class);
+        // return $this->belongsToMany(User::class,'posts','id','user_id');
     }
     public function likes(){
         return $this->hasMany(Like::class);
     }
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+    public function userLikedPost()
+    {
+        return (bool) $this->likes->where('user_id', auth()->id())->count();
     }
 }

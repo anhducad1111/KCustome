@@ -9,16 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 
-session_start();
+// session_start();
 
 class PostController extends Controller
 {
-    public function add_post()
-    {
-        $categories = DB::table('categories')->orderBy('id', 'desc')->get();
-        // $manager_category = view('admin.edit_post')->with('edit_post', $edit_post);
-        return view('user.create_post')->with('category', $categories);
-    }
     public function save_post(Request $request)
     {
         $data = array();
@@ -38,7 +32,8 @@ class PostController extends Controller
             return Redirect::to('/home');
         }
         $data['post_image'] = '';
-        DB::table('posts')->insert($data);
+        // DB::table('posts')->insert($data);
+        Post::create($data);
         Session::put('message', 'Thêm bài viết thành công');
         return Redirect::to('/home');
     }

@@ -37,7 +37,7 @@
             content: none;
         }
     </style>
-
+    @livewireStyles
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                 <input type="search" placeholder="Search for creators, inspirations, and projects">
             </div>
             <div class="create">
-                <label class="btn btn-primary" for="create-post">Create</label>
+                <label class="btn btn-primary" for="create-btn">Create</label>
 
                 <div class="dropdown">
                     <a role="button" onclick="dropDown()" class="dropbtn">
@@ -185,7 +185,7 @@
                     </a> --}}
                 </div>
                 <!------------------------END OF SIDEBAR-------------------------->
-                <label for="create-post" class="btn btn-primary">Create Post</label>
+                <button class="btn btn-primary" id="create-btn">Create Post</button>
             </div>
             <!--==========MIDDLE============-->
             @if (Session::has('error'))
@@ -409,6 +409,12 @@
     <script src="{{ asset('js/jquery.scrollTo.js') }}"></script>
     <script src="{{ asset('js/like.js') }}"></script>
     <script src="{{ asset('js/index.js') }}"></script>
+    <script type="text/javascript">
+        // $('#example').data('jsonData').apply(this, arguments);
+        var token = '{{ Session::token() }}';
+        var urlLike = '{{ route('like') }}';
+    </script>
+    @livewireScripts
 </body>
 
 </html>

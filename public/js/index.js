@@ -239,11 +239,30 @@ window.onclick = function (event) {
 //     }
 //     else{
 //         btnlike.style.color = "red"
-        
+
 //     }
 // }
 // like
 
+const createModal = document.querySelector(".create-modal");
+const create = document.querySelector("#create-btn");
+const openCreateModal = () => {
+    createModal.style.display = "block";
+};
+//closes modal
+const closeCreateModal = (e) => {
+    if (e.target.classList.contains("create-modal")) {
+        createModal.style.display = "none";
+    }
+};
+//closes modal
+createModal.addEventListener("click", closeCreateModal);
+create.addEventListener("click", openCreateModal);
 
-
-
+function comment() {
+    // document.getElementsByClassName("comments").styles.display = "block";
+    var cmt = document.getElementsByClassName("comments");
+    for (var i = 0; i < cmt.length; i += 1) {
+        cmt[i].style.display = "block";
+    }
+}

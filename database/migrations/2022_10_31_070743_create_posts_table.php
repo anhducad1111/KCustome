@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->text('post_content');
             $table->text('post_image');
-            $table->integer('post_status');
+            $table->integer('post_status')->default(1);
             $table->timestamps();
         });
     }

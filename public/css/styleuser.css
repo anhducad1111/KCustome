@@ -271,32 +271,67 @@ main .container .left .profile {
     padding: 1rem 0;
 }
 .middle .create-post {
-    width: 100%;
-    display: flex;
+    /* width: 100%; */
+    /* display: flex; */
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    background: var(--color-white);
+    background-color: #fefefe;
+    margin: 10rem auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    /* background: var(--color-white);
     padding: 0.4rem var(--card-padding);
-    border-radius: var(--border-radius);
-    position: relative; /** */
+    border-radius: var(--border-radius); */
+    position: relative;
 }
-
+.create-modal {
+    /* background: rgba(255, 255, 255, 0.5); */
+    /* width: 100vw;
+    height: 100vh; */
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    /* text-align: center; */
+    /* display: grid; */
+    /* place-items: center; */
+    font-size: 0.9rem;
+    display: none; /*delete*/
+    background-color: rgba(0,0,0,0.4);
+}
+.create-modal form .card {
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 50%;
+    box-shadow: 0 0 1rem orange;
+    border: 1px solid #888;
+}
+.middle .create-post .infor{
+    display: flex;
+}
+.middle .create-post .add-to-post{
+    display: flex;
+}
 .middle .create-post textarea {
     justify-self: start;
-    width: 95%;
+    width: 100%;
     padding-left: 1rem;
     align-items: center;
     background: transparent;
-    color: var(--color-dark);
+    color: black;
     margin-right: 1rem;
     transition: all 0.5s ease-in;
     margin-top: 1rem;
 }
 .middle .create-post textarea::placeholder {
     margin-top: 0.5rem;
-    align-items: center;
-    /* text-align: center; */
+    /* align-items: center;
+    text-align: ; */
     font-family: "Poppins", sans-serif;
 }
 .middle .create-post .profile-photo img {
@@ -310,17 +345,24 @@ main .container .left .profile {
     display: none;
 }
 
+.middle .submit-post{
+
+    display: flex;
+}
+.middle .create-post input{
+    align-items: center;
+}
+
 #upload_img {
     cursor: pointer;
     margin-right: 5px;
     /* display: none; */
-    
 }
 #upload {
     width: 5rem;
     position: relative;
     margin: auto;
-    overflow:unset;
+    overflow: unset;
 }
 
 #upload img {
@@ -346,16 +388,16 @@ main .container .left .profile {
     transform: scale(2);
     opacity: 0;
 }
-input[type=file]::-webkit-file-upload-button{
+input[type="file"]::-webkit-file-upload-button {
     cursor: pointer;
 }
 
-.middle .create-post textarea:focus,
+/* .middle .create-post textarea:focus,
 .middle .create-post .profile-photo img:focus ~ #upload_img {
     padding-bottom: 7rem;
     padding-top: 0rem;
     display: block;
-}
+} */
 .middle .feeds .feed {
     background: var(--color-white);
     border-radius: var(--card-border-radius);
@@ -364,9 +406,23 @@ input[type=file]::-webkit-file-upload-button{
     font-size: 0.85rem;
     line-height: 1.5;
 }
-.middle .feeds .feed span i{
+
+.middle .feeds .feed span{
+    position: relative;
+}
+
+.middle .feeds .feed span .likecount{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 0.8rem;
+}
+
+.middle .feeds .feed span {
+    margin-right: 0.7rem;
+}
+.middle .feeds .feed .action-buttons span {
     cursor: pointer;
-    margin-right: 1rem;
 }
 
 .middle .feed .head {
@@ -393,7 +449,7 @@ input[type=file]::-webkit-file-upload-button{
     margin: 0.6rem;
 }
 
-.active-like{
+.active-like {
     text-decoration: underline;
     color: #00b4ff;
 }
@@ -426,6 +482,14 @@ input[type=file]::-webkit-file-upload-button{
     margin-bottom: 1rem;
     font-size: 0.85rem;
     line-height: 1.5;
+}
+
+.middle .comments{
+    display: none;
+}
+
+.middle .comments .profile-photo{
+    width: 3rem;
 }
 /*=======================RIGHT==============================*/
 .main .container .right {

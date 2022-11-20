@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 
-session_start();
+// session_start();
 
 class CategoryController extends Controller
 {
@@ -38,7 +38,7 @@ class CategoryController extends Controller
     {
         $edit_category = DB::table('categories')->where('id', $category_id)->get();
         $manager_category = view('admin.edit_category')->with('edit_category', $edit_category);
-        dd($edit_category);
+        // dd($edit_category);
         return view('layouts.admin')->with('admin.edit_category', $manager_category);
 
     }
