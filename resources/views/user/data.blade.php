@@ -43,7 +43,7 @@
             enctype="multipart/form-data">
             @csrf
             <div class="profile-photo">
-                <img src="{{ Auth::user()->profile_picture }}">
+                <img src="{{ Auth::user()->avatar }}">
             </div>
             {{-- <input type="text" placeholder="What's on your mind, Diana?" id="create-post" rows="8"> --}}
             <textarea name="post_content" type="text" placeholder="What's on your mind, {{ Auth::user()->name }}?" id="create-post"
@@ -76,7 +76,7 @@
                             <div class="head">
                                 <div class="user">
                                     <div class="profile-photo">
-                                        <img src="{{ Auth::user()->profile_picture }}">
+                                        <img src="{{ Auth::user()->avatar }}">
                                     </div>
                                     <div class="ingo">
                                         <a href="{{ URL::to('user_profile/$post->id') }}">{{ $post->name }}</a>
@@ -167,7 +167,7 @@
                             </div>
                             <div class="liked-by">
                                 @foreach (Auth::user()->likes as $like)
-                                <span><img src="{{ Auth::user()->profile_picture }}"></span>
+                                <span><img src="{{ Auth::user()->avatar }}"></span>
                                 @endforeach
                                 
                                 
@@ -178,7 +178,7 @@
                                     <div class="" style="margin: 0; border-radius: 0;">
                                         <div class="panel-body">
                                             <div class="col-sm-2 profile-photo">
-                                                <img src="{{$comment->user->profile_picture }}" >
+                                                <img src="{{$comment->user->avatar }}" >
                                             </div>
                                             <div class="col-sm-2">
                                                 {{$comment->user->name }}:

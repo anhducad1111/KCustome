@@ -26,7 +26,7 @@ class User extends Authenticatable
         'dateofbirth',
         'gender',
         'password',
-        'profile_picture',
+        'avatar',
         'bio',
         'is_admin'
     ];
@@ -56,5 +56,9 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+    public function marks()
+    {
+        return $this->hasMany(Bookmark::class);
     }
 }

@@ -10,10 +10,8 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->morphs('markable');
-            $table->string('value')->nullable();
-            $table->json('metadata')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('post_id');
             $table->timestamps();
         });
     }

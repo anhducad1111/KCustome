@@ -56,7 +56,7 @@
 
                 <div class="dropdown">
                     <a role="button" onclick="dropDown()" class="dropbtn">
-                        <img alt="" src="{{ Auth::user()->profile_picture }}" class="profile-photo dropbtn"
+                        <img alt="" src="{{ Auth::user()->avatar }}" class="profile-photo dropbtn"
                             style="display:inline-block"> </a>
                     @if (Route::has('login'))
                         <div class="dropdown-content" id="myDropdown" style="">
@@ -82,7 +82,7 @@
             <div class="left">
                 <a class="profile" href="{{ URL::to('/user_profile') }}">
                     <div class="profile-photo">
-                        <img src="{{ Auth::user()->profile_picture }}">
+                        <img src="{{ Auth::user()->avatar }}">
                     </div>
                     <div class="handle">
                         <h4>{{ Auth::user()->name }}</h4>
@@ -97,7 +97,7 @@
                         <span><i class="bi bi-house"></i></span>
                         <h3>Home</h3>
                     </a>
-                    <a class="menu-item" id="menu-user"href="{{ URL::to('/my_profile') }}">
+                    <a class="menu-item" id="menu-user"href="{{ route('user_profile', Auth::user()->id)  }}">
                         <span><i class="bi bi-person"></i></span>
                         <h3>My Profile</h3>
                     </a>
@@ -167,7 +167,7 @@
                         <span><i class="bi bi-chat"><small class="notification-count">6</small></i></span>
                         <h3>Messages</h3>
                     </a>
-                    <a class="menu-item" id="menu-bookmark">
+                    <a class="menu-item" id="menu-bookmark" href="{{ route('bookmark', Auth::user()->id) }}">
                         <span></span><i class="bi bi-bookmark"></i></span>
                         <h3>Bookmarks</h3>
                     </a>
@@ -207,7 +207,7 @@
             <!-------------------END OF MIDLE------------------------->
             <!--=========RIGHT============-->
             <div class="right">
-                <div class="messages">
+                {{-- <div class="messages">
                     <div class="heading">
                         <h4>Messages</h4><i class="uil uil-edit"></i>
                     </div>
@@ -225,7 +225,7 @@
                     <!--------------------MESSAGES--------------------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="{{ Auth::user()->profile_picture }}">
+                            <img src="{{ Auth::user()->avatar }}">
                         </div>
                         <div class="message-body">
                             <h5>Noo Phuoc Thinh</h5>
@@ -235,7 +235,7 @@
                     <!--------------------MESSAGES--------------------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="{{ Auth::user()->profile_picture }}">
+                            <img src="{{ Auth::user()->avatar }}">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
@@ -246,7 +246,7 @@
                     <!--------------------MESSAGES--------------------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="{{ Auth::user()->profile_picture }}">
+                            <img src="{{ Auth::user()->avatar }}">
                         </div>
                         <div class="message-body">
                             <h5>Kim Teahuynh</h5>
@@ -256,7 +256,7 @@
                     <!--------------------MESSAGES--------------------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="{{ Auth::user()->profile_picture }}">
+                            <img src="{{ Auth::user()->avatar }}">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
@@ -267,23 +267,23 @@
                     <!--------------------MESSAGES--------------------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="{{ Auth::user()->profile_picture }}">
+                            <img src="{{ Auth::user()->avatar }}">
                         </div>
                         <div class="message-body">
                             <h5>LyLy LaLa</h5>
                             <p class="text-bold">lol u right</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-------------------END OF MESSAGES-------------------------->
 
                 <!-------------------FRIEND REQUESTS-------------------------->
-                <div class="friend-requests">
-                    <h4>Requests</h4>
+                <div class="friend-requests" style="margin-top: 0rem">
+                    {{-- <h4>Requests</h4> --}}
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ Auth::user()->avatar }}">
                             </div>
                             <div>
                                 <h5>Nhu Quynh</h5>
@@ -304,7 +304,7 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ Auth::user()->avatar }}">
                             </div>
                             <div>
                                 <h5>Son Tung M-TP</h5>
@@ -325,7 +325,7 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ Auth::user()->avatar }}">
                             </div>
                             <div>
                                 <h5>Van Lam</h5>
@@ -346,7 +346,7 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ Auth::user()->avatar }}">
                             </div>
                             <div>
                                 <h5>MoNo</h5>
@@ -367,7 +367,7 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ Auth::user()->avatar }}">
                             </div>
                             <div>
                                 <h5>Ky Duyen</h5>

@@ -57,4 +57,12 @@ class HomeController extends Controller
         $user = User::with('posts')->get();
         return view('user.data')->with('categories', $categories)->with('posts', $posts)->with('user', $user);
     }
+    public function user_profile($user_id){
+        // $user = DB::table('users')->where('id', $user_id)->get();
+        $user = User::with('posts')->where('id', $user_id)->first();
+        // dd($user->avatar);
+        $categories = Category::with('posts')->get();
+        $posts = Post::with('user', 'categories')->join('categories', 'categories.id', '=', 'posts.category_id')->join('users', 'users.id', '=', 'posts.user_id')->get(['categories.category_status','categories.category_name', 'users.name', 'posts.*']);
+        return view('user.profile')->with('user', $user)->with('categories', $categories)->with('posts', $posts);
+    }
 }

@@ -359,15 +359,17 @@ main .container .left .profile {
     /* display: none; */
 }
 #upload {
-    width: 5rem;
+    width: 7rem;
     position: relative;
     margin: auto;
     overflow: unset;
 }
 
 #upload img {
+    cursor: pointer;
     border-radius: 50%;
     border: 3px solid #eaeaea;
+
 }
 
 #upload .round {
@@ -421,6 +423,7 @@ input[type="file"]::-webkit-file-upload-button {
 .middle .feeds .feed span {
     margin-right: 0.7rem;
 }
+
 .middle .feeds .feed .action-buttons span {
     cursor: pointer;
 }
@@ -433,6 +436,10 @@ input[type="file"]::-webkit-file-upload-button {
 .middle .feed .user {
     display: flex;
     gap: 1rem;
+}
+
+.middle .feed .category{
+    cursor: pointer;
 }
 
 .middle .feed .photo {

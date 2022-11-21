@@ -6,7 +6,7 @@
                     <div class="head">
                         <div class="user">
                             <div class="profile-photo">
-                                <img src="{{ Auth::user()->profile_picture }}">
+                                <img src="{{ $post->user->avatar }}">
                             </div>
                             <div class="ingo">
                                 <a href="{{ route('user_profile', $post->user->id) }}">{{ $post->name }}</a><br>
@@ -24,18 +24,17 @@
                             </span>
                             <br>
                             <span class="tag category">
-                                <a href="">#{{ $post->category_name }}</a>
+                                <a
+                                    href="{{ route('category_post', $post->category_id) }}">#{{ $post->category_name }}</a>
                             </span>
                         </p>
                     </div>
                     <div class="photo">
                         <img src="{{ asset('upload/post/' . $post->post_image) }}" alt="">
                     </div>
-
                     <div class="action-buttons">
                         <div class="interaction-buttons">
                             <span><i class="bi bi-heart @if ($post->userLikedPost()) text-danger @endif"
-                                    @if ($post->userLikedPost()) text-blue-500 @endif
                                     wire:click="addLikeToPost({{ $post->id }})"></i>
                                 <p class="likecount">{{ $post->likes->count() }}</p>
                             </span>
@@ -43,14 +42,14 @@
                             <span><i class="bi bi-share"></i></span>
                         </div>
                         <div class="bookmark">
-                            <span class=" me-0"><i class="bi bi-bookmark"></i></span>
+                            <span class=" me-0"><i class="bi bi-bookmark @if ($post->userMarkedPost()) text-danger @endif" wire:click="addBookmarkToPost({{ $post->id }})"></i></span>
                         </div>
                     </div>
                     <div class="liked-by">
                         @if ($post->likes->count() == 0)
                         @else
                             @foreach ($post->likes as $like)
-                                <span><img src="{{ $like->user->profile_picture }}" alt=""></span>
+                                <span><img src="{{ $like->user->avatar }}" alt=""></span>
                             @endforeach
                             liked by:
                             @foreach ($post->likes as $like)
@@ -63,7 +62,7 @@
                             <div class="text-white" style="margin: 0; border-radius: 0;">
                                 <div class="panel-body row">
                                     <div class="col-sm-2 profile-photo">
-                                        <img src="{{ $comment->user->profile_picture }}">
+                                        <img src="{{ $comment->user->avatar }}">
                                     </div>
                                     <div class="col-sm-10">
                                         <span>

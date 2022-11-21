@@ -53,4 +53,5 @@ Route::get('/user_profile/{user_id}',[App\Http\Controllers\HomeController::class
 Route::get('/data',[App\Http\Controllers\HomeController::class, 'data']);
 Route::post('/like', [App\Http\Controllers\User\LikeController::class, 'index'])->name('like');
 Route::post('/comment', [App\Http\Controllers\User\CommentController::class, 'index'])->name('comment');
-Route::post('ajaxLike', 'PostController@ajaxLike')->name('ajaxLike');
+Route::get('/category_post/{category_id}',[App\Http\Livewire\FetchCategories::class, 'fetch_categories'])->name('category_post');
+Route::get('/bookmark/{user_id}',[App\Http\Livewire\FetchBookmarks::class, 'fetch_bookmarks'])->name('bookmark');

@@ -5,7 +5,7 @@
         {{ csrf_field() }}
         <div class="edit_image">
             <div class="profile-photo ">
-                <img src="{{ Auth::user()->profile_picture }}">
+                <img src="{{ Auth::user()->avatar }}">
             </div>
             <span class="" id="upload_img">
                 <div id="element" tabindex="-1"></div><input type="file" name="post_image" class="form-control">

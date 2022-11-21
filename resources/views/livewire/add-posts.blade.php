@@ -4,7 +4,7 @@
         @csrf
         <div class="infor">
             <div class="profile-photo">
-                <img src="{{ Auth::user()->profile_picture }}">
+                <img src="{{ Auth::user()->avatar }}">
             </div>
             <h3>{{ Auth::user()->name }}</h3>
         </div>

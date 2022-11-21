@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'dateofbirth' => $data['dateofbirth'],
             'gender' => $data['gender'],
             'bio' => $data['bio'],
-            'profile_picture' => "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
+            'avatar' => "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
             'password' => Hash::make($data['password']),
         ]);
     }
