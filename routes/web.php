@@ -55,3 +55,4 @@ Route::post('/like', [App\Http\Controllers\User\LikeController::class, 'index'])
 Route::post('/comment', [App\Http\Controllers\User\CommentController::class, 'index'])->name('comment');
 Route::get('/category_post/{category_id}',[App\Http\Livewire\FetchCategories::class, 'fetch_categories'])->name('category_post');
 Route::get('/bookmark/{user_id}',[App\Http\Livewire\FetchBookmarks::class, 'fetch_bookmarks'])->name('bookmark');
+Route::get('/message/{user_id}', [App\Http\Controllers\User\MessageController::class, 'index'])->name('message');

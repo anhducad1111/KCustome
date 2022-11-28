@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Comment;
 
 // session_start();
 
@@ -99,6 +100,7 @@ class PostController extends Controller
     }
     public function delete_post($post_id)
     {
+        Comment::where('post_id', '=', $post_id)->delete();
         Post::where('id', '=', $post_id)->delete();
         return redirect()->back()->with('message', 'Xoá bài viết thành công');
     }

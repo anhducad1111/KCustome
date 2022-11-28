@@ -50,8 +50,10 @@ body {
 /* general */
 .profile-photo {
     width: 2.7rem;
+    height: 2.7rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    object-fit: fill;
     overflow: hidden;
 }
 
@@ -275,10 +277,11 @@ main .container .left .profile {
     /* display: flex; */
     align-items: center;
     justify-content: space-between;
-    background-color: #fefefe;
+    background-color: var(--color-white);
     margin: 10rem auto;
     padding: 20px;
-    border: 1px solid #888;
+    border-radius: var(--card-border-radius);
+    /* border: 1px solid #888; */
     width: 50%;
     /* background: var(--color-white);
     padding: 0.4rem var(--card-padding);
@@ -323,10 +326,11 @@ main .container .left .profile {
     padding-left: 1rem;
     align-items: center;
     background: transparent;
-    color: black;
+    /* color: black; */
     margin-right: 1rem;
     transition: all 0.5s ease-in;
     margin-top: 1rem;
+    font-size: 1.2rem;
 }
 .middle .create-post textarea::placeholder {
     margin-top: 0.5rem;
@@ -359,7 +363,7 @@ main .container .left .profile {
     /* display: none; */
 }
 #upload {
-    width: 7rem;
+    width: 6rem;
     position: relative;
     margin: auto;
     overflow: unset;
@@ -368,6 +372,9 @@ main .container .left .profile {
 #upload img {
     cursor: pointer;
     border-radius: 50%;
+    object-fit: cover;
+    width: 6rem;
+    height: 6rem;
     border: 3px solid #eaeaea;
 
 }
@@ -407,6 +414,10 @@ input[type="file"]::-webkit-file-upload-button {
     margin-bottom: 1rem;
     font-size: 0.85rem;
     line-height: 1.5;
+}
+
+.middle .feeds .feed .profile-photo img{
+    border-radius: 50%;
 }
 
 .middle .feeds .feed span{
@@ -563,7 +574,12 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .right .profile-photo img {
-    border-radius: 50%;
+    border-radius: 100%;
+    /* object-fit: fill; */
+    width: 2.7rem;
+    height: 2.7rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
 }
 
 .right .messages .message:last-child {

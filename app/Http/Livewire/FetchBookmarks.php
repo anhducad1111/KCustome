@@ -15,7 +15,7 @@ class FetchBookmarks extends Component
         $categories = Category::with('posts')->get();
         $posts = Post::with('user', 'categories','marks')->join('categories', 'categories.id', '=', 'posts.category_id')->join('users', 'users.id', '=', 'posts.user_id')->join('bookmarks', 'bookmarks.user_id', '=', 'users.id')->get(['categories.category_status','categories.category_name', 'users.name', 'posts.*']);
         $user = DB::table('users')->where('id', $user_id)->get();
-        $bookmarks = Bookmark::with('post')->get();
+        $bookmarks = Bookmark::with('post')->join('users', 'users.id', '=', 'bookmarks.user_id')->get();
         // dd($bookmarks);
         return view('livewire.fetch-bookmarks')->with('categories', $categories)->with('posts', $posts)->with('user', $user)->with('bookmarks',$bookmarks);
     }

@@ -259,10 +259,15 @@ const closeCreateModal = (e) => {
 createModal.addEventListener("click", closeCreateModal);
 create.addEventListener("click", openCreateModal);
 
-function comment() {
+function comment(id) {
     // document.getElementsByClassName("comments").styles.display = "block";
     var cmt = document.getElementsByClassName("comments");
-    for (var i = 0; i < cmt.length; i += 1) {
-        cmt[i].style.display = "block";
-    }
+    // console.log(id);
+    // console.log(cmt[id])
+
+    // for (var i = 0; i < cmt.length; i += 1) {
+    //     cmt[i].style.display = "block";
+    // }
+    cmt[id-1].style.display = "block";
+
 }

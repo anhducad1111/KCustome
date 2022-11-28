@@ -43,7 +43,7 @@
                             <td>{{ $post->post_content }}</td>
                             <td><img src="{{ asset('upload/post/' . $post->post_image) }} " alt="" height="100"
                                     width="100"></td>
-                            <td></td>
+                            <td>{{ $post->created_at }}</td>
                             <td>{{ $post->category_name }}</td>
                             <td>
                                 @if ($post->post_status == 0)

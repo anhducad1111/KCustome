@@ -61,7 +61,7 @@
                     @if (Route::has('login'))
                         <div class="dropdown-content" id="myDropdown" style="">
                             @auth
-                                <a href="{{ url('/user_profile') }}">Profile</a>
+                                <a href="{{ route('user_profile', Auth::user()->id) }}">Profile</a>
                                 <a href="{{ url('/logout') }}">Log out</a>
                             @else
                                 <a href="{{ route('login') }}">Log in</a>
@@ -80,14 +80,15 @@
         <div class="container">
             {{-- left --}}
             <div class="left">
-                <a class="profile" href="{{ URL::to('/user_profile') }}">
+                <a class="profile" href="{{ route('user_profile', Auth::user()->id) }}">
                     <div class="profile-photo">
                         <img src="{{ Auth::user()->avatar }}">
                     </div>
                     <div class="handle">
-                        <h4>{{ Auth::user()->name }}</h4>
-                        <p class="text-muted">
-                            @duck
+                        {{-- <a href="{{ route('user_profile', Auth::user()->id) }}"></a> --}}
+                        <h4 class="">{{ Auth::user()->name }}</h4>
+                        <p class="text-muted mb-0">
+                            {{ Auth::user()->bio }}
                         </p>
                     </div>
                 </a>
@@ -278,7 +279,7 @@
                 <!-------------------END OF MESSAGES-------------------------->
 
                 <!-------------------FRIEND REQUESTS-------------------------->
-                <div class="friend-requests" style="margin-top: 0rem">
+                <div class="friend-requests mt-0">
                     {{-- <h4>Requests</h4> --}}
                     <div class="request">
                         <div class="info">

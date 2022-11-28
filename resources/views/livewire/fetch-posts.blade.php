@@ -6,10 +6,14 @@
                     <div class="head">
                         <div class="user">
                             <div class="profile-photo">
-                                <img src="{{ $post->user->avatar }}">
+                                {{-- <img src="{{ $post->user->avatar }}"> --}}
+                                <a href="{{ route('user_profile', $post->user->id) }}"><img
+                                        src="{{ $post->user->avatar }}"></a><br>
                             </div>
                             <div class="ingo">
-                                <a href="{{ route('user_profile', $post->user->id) }}">{{ $post->name }}</a><br>
+                                <a href="{{ route('user_profile', $post->user->id) }}" class="text-white">
+                                    <h5>{{ $post->name }}</h5>
+                                </a>
                                 <small>{{ $post->created_at }}</small>
                             </div>
                         </div>
@@ -17,17 +21,13 @@
                             <i class="bi bi-three-dots me-0"></i>
                         </span>
                     </div>
-                    <div class="caption">
-                        <p>
-                            <span class="content">
-                                <h5>{{ $post->post_content }}</h5>
-                            </span>
-                            <br>
-                            <span class="tag category">
-                                <a
-                                    href="{{ route('category_post', $post->category_id) }}">#{{ $post->category_name }}</a>
-                            </span>
-                        </p>
+                    <div class="caption mt-3">
+                        <span class="content">
+                            <h5>{{ $post->post_content }}</h5>
+                        </span>
+                        <span class="tag category">
+                            <a href="{{ route('category_post', $post->category_id) }}">#{{ $post->category_name }}</a>
+                        </span>
                     </div>
                     <div class="photo">
                         <img src="{{ asset('upload/post/' . $post->post_image) }}" alt="">
@@ -38,11 +38,17 @@
                                     wire:click="addLikeToPost({{ $post->id }})"></i>
                                 <p class="likecount">{{ $post->likes->count() }}</p>
                             </span>
-                            <span><i class="bi bi-chat" onclick="comment()"></i></span>
+                            {{-- <span><i class="bi bi-chat" onclick="comment()"></i></span> --}}
+                            {{-- @php
+                                dd($posts);
+                            @endphp --}}
+                            <span><i class="bi bi-chat" onclick="comment({{ $post->id }})"></i></span>
                             <span><i class="bi bi-share"></i></span>
                         </div>
                         <div class="bookmark">
-                            <span class=" me-0"><i class="bi bi-bookmark @if ($post->userMarkedPost()) text-danger @endif" wire:click="addBookmarkToPost({{ $post->id }})"></i></span>
+                            <span class="me-0"><i
+                                    class="bi bi-bookmark @if ($post->userMarkedPost()) text-danger @endif"
+                                    wire:click="addBookmarkToPost({{ $post->id }})"></i></span>
                         </div>
                     </div>
                     <div class="liked-by">

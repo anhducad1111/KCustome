@@ -13,16 +13,12 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ch_messages', function (Blueprint $table) {
-            $table->bigInteger('id');
-            $table->string('type');
-            $table->bigInteger('from_id');
-            $table->bigInteger('to_id');
-            $table->string('body',5000)->nullable();
-            $table->string('attachment')->nullable();
-            $table->boolean('seen')->default(false);
+        Schema::create('messages', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('receiver_id');
+            $table->text('message');
             $table->timestamps();
-            $table->primary('id');
         });
     }
 
@@ -33,6 +29,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ch_messages');
+        Schema::dropIfExists('messages');
     }
 }

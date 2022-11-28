@@ -7,9 +7,9 @@
                 @foreach ($bookmarks as $key => $mark)
                     @if ($post->post_status == '1')
                         @php
-                            // dd($post->marks);
+                            dd($mark->user_id);
                         @endphp
-                        @if ($post->marks == null)
+                        @if ($mark->user_id == Auth::user()->id)
                             <div class="feed" data-postid="{{ $post->id }}">
                                 <div class="head">
                                     <div class="user">

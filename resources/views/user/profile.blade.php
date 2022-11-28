@@ -29,9 +29,21 @@
                 </h5>
             </div>
 
-            <div class="col-md-4 m-auto">
+            {{-- <div class="col-md-4 m-auto">
                 <a class="btn mb-4" style="width: 10rem">Add friend</a>
-                <a class="btn" style="width: 10rem">Message</a>
+                <a class="btn" href="{{ route('message', $user->id) }}" style="width: 10rem">Message</a>
+            </div> --}}
+            <div class="pull-right col-md-4 m-auto" data-friendid="{{ $user->id }}">
+                @if (Auth::check())
+                    @if ($user->id == Auth::id())
+                    <a class="btn" style="width: 10rem">View friend</a>
+                    @else
+                    <a class="btn mb-4" style="width: 10rem">Add friend</a>
+                    <a class="btn" href="{{ route('message', $user->id) }}" style="width: 10rem">Message</a>
+                    @endif
+                @endif
+                {{-- <a href="{{ route('friend.show', $user->id) }}" class="btn btn-link">View Friends</a> --}}
+                {{-- <a class="btn" href="{{ route('message', $user->id) }}" style="width: 10rem">Message</a> --}}
             </div>
         </div>
         <div class="feeds">
