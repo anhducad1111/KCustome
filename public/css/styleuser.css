@@ -365,7 +365,7 @@ main .container .left .profile {
 #upload {
     width: 6rem;
     position: relative;
-    margin: auto;
+    margin: 1rem;
     overflow: unset;
 }
 

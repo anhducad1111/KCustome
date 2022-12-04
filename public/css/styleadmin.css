@@ -13,7 +13,7 @@ html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
     overflow-x: hidden;
-    background: url(../images/bg.jpg) no-repeat 0px 0px;
+    background: rgb(112, 112, 112);
 	background-size:cover;
 }
 body a{
@@ -202,15 +202,15 @@ ul.sidebar-menu li a.active i {
     transition:all .3s ease-in-out;
 }
 .footer {
-    background: #d19a98;
+    background: rgba(0,0,0,0.3);
     padding: 20px;
 }
 .footer p {
-    color: #fff;
+    color: rgb(255, 255, 255);
     letter-spacing: 1px;
 }
 .footer p a {
-    color: #744e7d;
+    color: #c287d0;
 }
 .footer p a:hover {
     color: #fff;

@@ -1,7 +1,37 @@
 @extends('layouts.user')
 
 @section('content')
+
+<style>
+        .left .sidebar .activeup {
+            background: var(--color-light);
+        }
+
+        #menu-user h3 {
+            color: var(--color-primary);
+        }
+
+        .left .sidebar #menu-user::before {
+            content: "";
+            display: block;
+            width: 0.5rem;
+            height: 100%;
+            position: absolute;
+            background: var(--color-primary);
+        }
+
+        .left .sidebar .menu-item:first-child #menu-user {
+            border-top-left-radius: var(--card-border-radius);
+            overflow: hidden;
+        }
+
+        .left .sidebar .menu-item:last-child #menu-user {
+            border-bottom-left-radius: var(--card-border-radius);
+            overflow: hidden;
+        }
+    </style>
     <div class="middle">
+        <livewire:add-posts />
         {{-- @foreach ($user as $user) --}}
         <div class="user_profile row me-0 ms-0">
             {{-- <h2 class="text-center">User profile</h2> --}}

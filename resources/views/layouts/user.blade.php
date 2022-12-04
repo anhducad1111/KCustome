@@ -195,6 +195,7 @@
                     <h2>{{ Session('error') }}</h2>
                 </div>
             @endif
+            
             {{-- <div class="overlay-admin" role="alert">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
@@ -204,7 +205,9 @@
                     </div>
                 </div> --}}
 
-            @yield('content')
+
+            
+                @yield('content')
             <!-------------------END OF MIDLE------------------------->
             <!--=========RIGHT============-->
             <div class="right">
