@@ -14,7 +14,22 @@
                                 <a href="{{ route('user_profile', $post->user->id) }}" class="text-white">
                                     <h5>{{ $post->name }}</h5>
                                 </a>
-                                <small>{{ $post->created_at }}</small>
+                                <small>
+                                    @php
+                                        $created_at = \Carbon\Carbon::parse($post->created_at);
+                                        $now = \Carbon\Carbon::now();
+                                        $diff = $created_at->diff($now);
+                                        
+                                        if ($diff->y > 0 || $diff->m > 0 || $diff->d > 0) {
+                                            echo $created_at->format('j M Y');
+                                        } elseif ($diff->h > 0) {
+                                            echo ($diff->h == 1 ? '1 hour' : $diff->h . ' hours') . ' ago';
+                                        } else {
+                                            echo ($diff->i == 1 ? '1 minute' : $diff->i . ' minutes') . ' ago';
+                                        }
+                                    @endphp
+
+                                </small>
                             </div>
                         </div>
                         <span class="edit">
@@ -38,10 +53,7 @@
                                     wire:click="addLikeToPost({{ $post->id }})"></i>
                                 <p class="likecount">{{ $post->likes->count() }}</p>
                             </span>
-                            {{-- <span><i class="bi bi-chat" onclick="comment()"></i></span> --}}
-                            {{-- @php
-                                dd($posts);
-                            @endphp --}}
+
                             <span><i class="bi bi-chat" onclick="comment({{ $post->id }})"></i></span>
                             <span><i class="bi bi-share"></i></span>
                         </div>
@@ -52,17 +64,28 @@
                         </div>
                     </div>
                     <div class="liked-by">
-                        @if ($post->likes->count() == 0)
-                        @else
-                            @foreach ($post->likes as $like)
+                        @if ($post->likes->count() > 0)
+                            @php
+                                $likeCount = $post->likes->count();
+                                $limit = 3;
+                            @endphp
+
+                            @foreach ($post->likes->take($limit) as $like)
                                 <span><img src="{{ $like->user->avatar }}" alt=""></span>
                             @endforeach
                             liked by:
-                            @foreach ($post->likes as $like)
-                                <p> {{ $like->user->name }},</p>
+                            @foreach ($post->likes->take($limit) as $like)
+                                {{ $like->user->name }}
+                                @if (!$loop->last && !$loop->remaining)
+                                    ,
+                                @endif
                             @endforeach
+                            @if ($likeCount > $limit)
+                                and {{ $likeCount - $limit }} others
+                            @endif
                         @endif
                     </div>
+
                     <div class="comments text-muted">
                         @foreach ($post->comments as $comment)
                             <div class="text-white" style="margin: 0; border-radius: 0;">

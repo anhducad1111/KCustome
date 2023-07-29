@@ -37,15 +37,10 @@ class PostController extends Controller
 
         $data = array();
         $data['post_content'] = $request->post_content;
-        // $data['post_status'] = $request->post_status;
         $data['post_status'] = $request->post_status;
-        // if('post_status'){
-        //     $data['post_status'] = $request->post_status;
-        // }
-        // $data['post_status'] = '1';
         $data['category_id'] = $request->category;
         $data['user_id'] = '1';
-        // $data['category_name'] = $request->category_name;
+        
         $get_image = $request->file('post_image');
         if($get_image){
             $get_image_name = $get_image->getClientOriginalName();
